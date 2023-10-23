@@ -21,9 +21,6 @@ jobs:
             - name: Install dependencies
               run: npm install
 
-            - name: Build
-              run: npm run build
-
             - name: copy files to server
               uses: appleboy/scp-action@master
               with:
