@@ -80,7 +80,7 @@ export class HeartbeatController {
                                 console.error(updateErr);
                                 return;
                             }
-                            console.log('Updated existing downtime');
+                            console.log('Updated existing downtime...');
                         }
                     );
                 }
