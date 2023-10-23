@@ -36,4 +36,5 @@ jobs:
                     ./*
                     !./.github
                     !./node_modules
+                    !./LICENSE
                 strip_components: 1
