@@ -1,0 +1,39 @@
+name: Deploy
+
+on:
+    push:
+        branches:
+        - main
+
+jobs:
+    deploy:
+        name: Deploy
+        runs-on: ubuntu-20.04
+    
+        steps:
+            - uses : actions/checkout@v2
+
+            - name: Node 18.x
+              uses: actions/setup-node@v2
+              with:
+                node-version: '18.x'
+                
+            - name: Install dependencies
+              run: npm install
+
+            - name: Build
+              run: npm run build
+
+            - name: copy files to server
+              uses: appleboy/scp-action@master
+              with:
+                host: ${{ secrets.HOST }}
+                username: ${{ secrets.USERNAME }}
+                password: ${{ secrets.PASSWORD }}
+                port: ${{ secrets.PORT }}
+                target: ${{ secrets.TARGET }}
+                source: |
+                    ./*
+                    !./.github
+                    !./node_modules
+                strip_components: 1
