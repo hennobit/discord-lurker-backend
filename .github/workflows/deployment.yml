@@ -35,6 +35,12 @@ jobs:
                   source: ./dist/*
                   strip_components: 1
 
-            - name: SSH into the server and restart service t
-              run: |
-                  ssh ${{secrets.USERNAME}}@${{secrets.HOST}} "sudo service dc-lurker-backend restart"
+            - name: SSH into Server and Restart Service
+              uses: appleboy/ssh-action@master
+              with:
+                  host: ${{ secrets.HOST }}
+                  username: ${{ secrets.USERNAME }}
+                  password: ${{ secrets.PASSWORD }}
+                  port: ${{ secrets.PORT }}
+                  script: |
+                      sudo systemctl restart dein-dienst
