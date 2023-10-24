@@ -43,4 +43,4 @@ jobs:
                   password: ${{ secrets.PASSWORD }}
                   port: ${{ secrets.PORT }}
                   script: |
-                      echo '' | sudo -S systemctl restart dc-lurker-bot
+                      echo ${{ secrets.PASSWORD }} | sudo systemctl restart dc-lurker-bot
