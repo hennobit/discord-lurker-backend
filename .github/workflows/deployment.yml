@@ -18,9 +18,6 @@ jobs:
               with:
                 node-version: '18.x'
                 
-            - name: Install dependencies
-              run: npm install
-
             - name: Bundle files
               run: npm run bundle
 
@@ -34,3 +31,7 @@ jobs:
                 target: ${{ secrets.TARGET }}
                 source: ./dist/*
                 strip_components: 1
+
+            - name: SSH into the server and restart service
+              run: |
+                  ssh ${{secrets.USERNAME}}@${{secrets.HOST}} "sudo service dc-lurker-backend restart"
