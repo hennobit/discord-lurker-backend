@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { db } from '../database/database';
+import { db } from '../db/database';
 import { Heartbeat } from '../interfaces/Heartbeat';
 
 export class RunningSinceController {

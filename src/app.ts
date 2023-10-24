@@ -9,6 +9,11 @@ import bodyParser from 'body-parser';
 import fs from 'fs';
 const app = express();
 
+const corsOptions = {
+    origin: 'http://discord-lurker.com',
+    optionsSuccessStatus: 200,
+};
+
 app.use(cors());
 app.use(bodyParser.json());
 

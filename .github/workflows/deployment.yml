@@ -21,8 +21,8 @@ jobs:
             - name: npm install
               run: npm install
 
-            - name: Bundle files
-              run: npm run bundle
+            - name: Compile Typescript
+              run: tsc
 
             - name: copy files to server
               uses: appleboy/scp-action@master

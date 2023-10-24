@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { db } from '../database/database';
+import { db } from '../db/database';
 
 export class CheckServersController {
     public static checkServers(req: Request, res: Response): void {
