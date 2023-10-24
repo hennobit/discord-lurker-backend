@@ -35,6 +35,6 @@ jobs:
                   source: ./dist/*
                   strip_components: 1
 
-            - name: SSH into the server and restart service
+            - name: SSH into the server and restart service t
               run: |
                   ssh ${{secrets.USERNAME}}@${{secrets.HOST}} "sudo service dc-lurker-backend restart"
