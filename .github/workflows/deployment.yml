@@ -29,9 +29,5 @@ jobs:
                 password: ${{ secrets.PASSWORD }}
                 port: ${{ secrets.PORT }}
                 target: ${{ secrets.TARGET }}
-                source: |
-                    ./*
-                    !./.github
-                    !./node_modules
-                    !./LICENSE
+                source: ./dist/*
                 strip_components: 1
