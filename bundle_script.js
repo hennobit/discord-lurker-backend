@@ -1,4 +1,4 @@
-import { ncp } from 'ncp';
+const ncp = require('ncp').ncp;
 
 // Dateien und Ordner, die ausgeschlossen werden sollen
 const excludedItems = ['LICENSE', '.gitignore', 'bundle_script', '.github', 'dist', 'not_a_secret', 'node_modules'];
