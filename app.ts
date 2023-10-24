@@ -22,7 +22,7 @@ app.get('/secret', (req, res) => {
     fs.readFile('not_a_secret.txt', 'utf8', (err, data) => {
         if (err) {
             console.error(err);
-            res.status(500).send('error: Fehler beim Lesen der Datei');
+            res.status(500).send('error: Fehler beim Lesen der Datei :(');
             return;
         }
         res.send(data);
