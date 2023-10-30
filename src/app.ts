@@ -5,6 +5,7 @@ import runningSinceRouter from './routes/runningSince';
 import usersRouter from './routes/users';
 import downtimes from './routes/downtimes';
 import checkServers from './routes/checkServers';
+import trackingSince from './routes/trackingSince';
 import bodyParser from 'body-parser';
 import fs from 'fs';
 const app = express();
@@ -22,6 +23,7 @@ app.use(runningSinceRouter);
 app.use(usersRouter);
 app.use(downtimes);
 app.use(checkServers);
+app.use(trackingSince);
 
 app.get('/secret', (req, res) => {
     fs.readFile('not_a_secret.txt', 'utf8', (err, data) => {
