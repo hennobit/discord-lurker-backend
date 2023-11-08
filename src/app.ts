@@ -48,10 +48,10 @@ const httpsOptions = {
 };
 const httpsServer = https.createServer(httpsOptions, app);
 
-httpServer.listen(80, () => {
-    console.log('HTTP-Server lauscht auf Port 80');
+httpServer.listen(3080, () => {
+    console.log('HTTP-Server lauscht auf Port 3080');
 });
 
-httpsServer.listen(443, () => {
-    console.log('HTTPS-Server lauscht auf Port 443');
+httpsServer.listen(3000, () => {
+    console.log('HTTPS-Server lauscht auf Port 3000');
 });
