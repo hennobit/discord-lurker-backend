@@ -8,14 +8,18 @@ import checkServers from './routes/checkServers';
 import trackingSince from './routes/trackingSince';
 import bodyParser from 'body-parser';
 import fs from 'fs';
+import http from 'http';
+import https from 'https';
+
 const app = express();
 
 const corsOptions = {
-    origin: 'http://discord-lurker.com',
-    optionsSuccessStatus: 200,
+    origin: ['http://discord-lurker.com', 'https://discord-lurker.com'], 
+    optionsSuccessStatus: 200
 };
 
-app.use(cors());
+app.use(cors(corsOptions));
+
 app.use(bodyParser.json());
 
 app.use(heartbeatRouter);
@@ -36,6 +40,18 @@ app.get('/secret', (req, res) => {
     });
 });
 
-app.listen(3000, () => {
-    console.log('Server listening on port 3000');
+const httpServer = http.createServer(app);
+const httpsOptions = {
+    key: fs.readFileSync('/etc/letsencrypt/archive/discord-lurker.com/privkey1.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/archive/discord-lurker.com/cert1.pem'),
+    ca: fs.readFileSync('/etc/letsencrypt/archive/discord-lurker.com/chain1.pem')
+};
+const httpsServer = https.createServer(httpsOptions, app);
+
+httpServer.listen(80, () => {
+    console.log('HTTP-Server lauscht auf Port 80');
+});
+
+httpsServer.listen(443, () => {
+    console.log('HTTPS-Server lauscht auf Port 443');
 });
