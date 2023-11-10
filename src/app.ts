@@ -17,7 +17,7 @@ const corsOptions = {
     origin: ['http://discord-lurker.com', 'https://discord-lurker.com'], 
     optionsSuccessStatus: 200
 };
-// deploytest
+// deploytest2
 app.use(cors(/*corsOptions*/));
 
 app.use(bodyParser.json());
